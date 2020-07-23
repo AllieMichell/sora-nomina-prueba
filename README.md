@@ -1,4 +1,4 @@
-# sora-nomina-backend
+# sora-nomina-prueba
 Objetivo: Diagnosticar el origen de la falla, diseñar hipótesis de solución, explicar los componentes necesarios que se utilizaran (librerías backend y frontend), Describir tareas necesarias que deben de cumplirse (ejemplo: utilizar libreria mysql para conectar con base de datos) y diseñar el sprint de trabajo asignando horas estimadas a las tareas.
 
 ## 1. Notificaciones a Empleados vía Email
@@ -75,6 +75,61 @@ npm install dotenv
 ```bash
 # Comando para instalar
 npm install request
+```
+## Listado de Servicios y sus usos
+- POST - addNewEmployee: Servicio para registrar un nuevo empleado
+```bash
+# URL
+http://localhost:3000/v0.0.1/sora-nomina/employee/addNewEmployee
+# Body
+{
+    "name":"Allie Michell Flores Sanchez",
+    "payrollStatus":false,
+    "mail":"alliemichellfs@gmail.com",
+    "phone":8129372690,
+    "company": "Empresa1",
+    "payroll":20000
+}
+```
+- GET - getAllEmployees: Servicio utilizado para mostrar todos los empleados
+```bash
+# URL
+http://localhost:3000/v0.0.1/sora-nomina/employee/getAllEmployees
+```
+- PUT - updateEmployee: Servicio utilizado para actualizar los datos de un empleado por ID
+```bash
+# URL
+http://localhost:3000/v0.0.1/sora-nomina/employee/updateEmployee/5f18707e22402a3dc8c8c9b7
+# Body
+{
+    "name":"Allie Michell",
+    "payrollStatus":false,
+    "mail":"alliemichellfs@gmail.com",
+    "phone":8129372690,
+    "company":"Empresa2",
+    "payroll":16000
+}
+```
+- DELETE - deleteEmployee: Servicio utilizado para eliminar los datos de un empleado por ID
+```bash
+# URL
+http://localhost:3000/v0.0.1/sora-nomina/employee/deleteEmployee/5f18707e22402a3dc8c8c9b7
+```
+- POST - sendMail: Servicio utilizado para enviar emails de notificación de firma a los empleados que aún no la han firmado
+```bash
+# URL
+http://localhost:3000/v0.0.1/sora-nomina/employee/sendMail
+# Body 
+{
+    "subject":"Firma de Nómina",
+    "text":"Te recordamos firmar tu recibo de nómina",
+    "payrollStatus":false
+}
+```
+- GET - sendSMS: Servicio utilizado para enviar SMS de notificación a los empleados de la compañia
+```bash
+# URL
+http://localhost:3000/v0.0.1/sora-nomina/employee/sendSMS
 ```
 ## Variables de entorno
 ```bash
